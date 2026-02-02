@@ -1,194 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Be My Valentine?</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #fff0f5; /* Soft lavender blush */
-            color: #a52a2a; /* Brown red for elegance */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            overflow: hidden;
-            position: relative;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Be My Valentine 💘</title>
 
-        .container {
-            text-align: center;
-            background-color: rgba(255, 255, 255, 0.95);
-            padding: 50px;
-            border-radius: 15px;
-            box-shadow: 0 8px 30px rgba(165, 42, 42, 0.1); /* Subtle red shadow */
-            z-index: 1;
-            max-width: 600px;
-        }
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(270deg, #ff758c, #ff7eb3, #ff9a9e);
+      background-size: 600% 600%;
+      animation: bgMove 12s ease infinite;
+      font-family: Arial, sans-serif;
+      color: white;
+      text-align: center;
+    }
 
-        h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.8em;
-            margin-bottom: 25px;
-            color: #c71585; /* Medium violet red */
-            animation: gentle-heartbeat 2s infinite ease-in-out;
-        }
+    @keyframes bgMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
 
-        .buttons {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-        }
+    .card {
+      background: rgba(255, 255, 255, 0.18);
+      padding: 22px;
+      border-radius: 22px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+      max-width: 95%;
+      width: 350px;
+      z-index: 10;
+      backdrop-filter: blur(6px);
+    }
 
-        button {
-            padding: 15px 40px;
-            font-size: 1.2em;
-            border: none;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: 'Roboto', sans-serif;
-            font-weight: 400;
-        }
+    h1 {
+      font-size: 1.5rem;
+      margin-bottom: 22px;
+      line-height: 1.3;
+    }
 
-        #yes {
-            background-color: #ff69b4; /* Hot pink */
-            color: white;
-        }
+    .buttons {
+      position: relative;
+      height: 90px;
+    }
 
-        #yes:hover {
-            background-color: #ff1493; /* Deep pink */
-            transform: scale(1.05);
-        }
+    button {
+      padding: 10px 22px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      position: absolute;
+      touch-action: manipulation;
+    }
 
-        #no {
-            background-color: #ffb6c1; /* Light pink */
-            color: #a52a2a;
-            position: absolute; /* For movement */
-        }
+    #yes {
+      background: #ffffff;
+      color: #ff4f81;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 0;
+    }
 
-        #no:hover {
-            background-color: #ff69b4;
-            color: white;
-            transform: scale(1.05);
-        }
+    #no {
+      background: #ff4f81;
+      color: white;
+      right: 10px;
+      top: 0;
+    }
 
-        /* Gentle heartbeat animation */
-        @keyframes gentle-heartbeat {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.03); }
-            100% { transform: scale(1); }
-        }
+    /* 💕 Floating hearts */
+    .heart {
+      position: absolute;
+      bottom: -20px;
+      opacity: 0.9;
+      pointer-events: none;
+      animation: floatUp linear infinite;
+    }
 
-        /* Floating hearts background */
-        .heart {
-            position: absolute;
-            font-size: 1.5em;
-            color: #ff69b4;
-            animation: float 6s linear infinite;
-            opacity: 0.6;
-            user-select: none;
-        }
+    @keyframes floatUp {
+      from { transform: translateY(0); opacity: 1; }
+      to { transform: translateY(-120vh); opacity: 0; }
+    }
 
-        @keyframes float {
-            0% { transform: translateY(0) rotate(0deg); opacity: 0.6; }
-            100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
-        }
-
-        /* Hidden audio player */
-        audio {
-            display: none;
-        }
-    </style>
+    /* 📱 Extra mobile polish */
+    @media (max-width: 400px) {
+      h1 { font-size: 1.3rem; }
+      button { font-size: 0.9rem; padding: 8px 18px; }
+      .buttons { height: 80px; }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Emoni Faith Morris, will you be my valentine?</h1>
-        <div class="buttons">
-            <button id="yes">Yes</button>
-            <!-- No button will be positioned dynamically -->
-        </div>
+
+  <div class="card">
+    <h1>Will you be my Valentine,<br>Emoni Faith Morris? 💖</h1>
+
+    <div class="buttons">
+      <button id="yes">Yes 💕</button>
+      <button id="no">No 🙃</button>
     </div>
-    <button id="no">No</button>
-    <audio id="ballad" src="ballad.mp3"></audio> <!-- Upload your MP3 file and name it ballad.mp3 -->
+  </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
-    <script>
-        // Create floating hearts (using ♥ symbol for cuteness)
-        function createHearts() {
-            for (let i = 0; i < 15; i++) { // Fewer for professionalism
-                const heart = document.createElement('div');
-                heart.className = 'heart';
-                heart.innerHTML = '♥';
-                heart.style.left = `${Math.random() * 100}vw`;
-                heart.style.fontSize = `${Math.random() * 1 + 1}em`;
-                heart.style.animationDuration = `${Math.random() * 4 + 4}s`;
-                heart.style.animationDelay = `${Math.random() * 5}s`;
-                document.body.appendChild(heart);
+  <!-- 🎶 Music -->
+  <audio id="song" src="Pi'erre Bourne - Ballad (Official Music Video).mp3"></audio>
 
-                // Remove after animation
-                setTimeout(() => heart.remove(), 8000);
-            }
-        }
-        setInterval(createHearts, 1500); // Slower interval for subtlety
+  <script>
+    const noButton = document.getElementById("no");
+    const yesButton = document.getElementById("yes");
+    const song = document.getElementById("song");
 
-        // Make "No" button run away
-        const noButton = document.getElementById('no');
-        const container = document.querySelector('.container');
+    function moveNo() {
+      const x = Math.random() * 200 - 100;
+      const y = Math.random() * 100 - 50;
+      noButton.style.transform = `translate(${x}px, ${y}px)`;
+    }
 
-        // Initial position near the Yes button
-        noButton.style.left = `${container.offsetLeft + container.offsetWidth / 2 + 40}px`;
-        noButton.style.top = `${container.offsetTop + container.offsetHeight - 60}px`;
+    noButton.addEventListener("mouseover", moveNo);
+    noButton.addEventListener("touchstart", moveNo);
 
-        document.addEventListener('mousemove', (e) => {
-            const rect = noButton.getBoundingClientRect();
-            const mouseX = e.clientX;
-            const mouseY = e.clientY;
+    yesButton.addEventListener("click", () => {
+      song.play();
 
-            const buttonCenterX = rect.left + rect.width / 2;
-            const buttonCenterY = rect.top + rect.height / 2;
-            const distX = mouseX - buttonCenterX;
-            const distY = mouseY - buttonCenterY;
-            const distance = Math.sqrt(distX * distX + distY * distY);
+      document.body.innerHTML = `
+        <div style="
+          height:100vh;
+          display:flex;
+          flex-direction:column;
+          justify-content:center;
+          align-items:center;
+          text-align:center;
+          padding:20px;
+        ">
+          <h1>You just made me the happiest person ever 💘<br><br>
+          Happy Valentine’s Day ❤️</h1>
+        </div>
+      `;
+    });
 
-            if (distance < 200) { // Slightly larger radius for playfulness
-                const moveX = (distX / distance) * -120;
-                const moveY = (distY / distance) * -120;
+    // 💕 Floating hearts generator
+    const heartEmojis = ["❤️","💖","💗","🤍"];
 
-                let newLeft = parseFloat(noButton.style.left || 0) + moveX;
-                let newTop = parseFloat(noButton.style.top || 0) + moveY;
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerHTML = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = Math.random() * 25 + 20 + "px";
+      heart.style.animationDuration = Math.random() * 3 + 4 + "s";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 7000);
+    }
 
-                newLeft = Math.max(0, Math.min(window.innerWidth - rect.width, newLeft));
-                newTop = Math.max(0, Math.min(window.innerHeight - rect.height, newTop));
+    setInterval(createHeart, 250);
+  </script>
 
-                noButton.style.left = `${newLeft}px`;
-                noButton.style.top = `${newTop}px`;
-            }
-        });
-
-        noButton.addEventListener('click', () => {
-            alert('Oh, you caught it! But I hope you\'ll reconsider... ❤️');
-        });
-
-        // Play song on Yes click with confetti
-        const yesButton = document.getElementById('yes');
-        const audio = document.getElementById('ballad');
-        yesButton.addEventListener('click', () => {
-            audio.play();
-            alert('Wonderful! ❤️ Happy Valentine\'s Day!');
-            // Increase hearts for celebration
-            setInterval(createHearts, 300);
-            // Confetti explosion
-            confetti({
-                particleCount: 150,
-                spread: 90,
-                origin: { y: 0.6 },
-                colors: ['#ff69b4', '#ff1493', '#ffb6c1']
-            });
-        });
-    </script>
 </body>
 </html>
