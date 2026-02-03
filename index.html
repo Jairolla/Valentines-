@@ -92,6 +92,15 @@
       to { transform: translateY(-120vh); opacity: 0; }
     }
 
+    #success {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      padding: 20px;
+    }
+
     @media (max-width: 400px) {
       h1 { font-size: 1.3rem; }
       button { font-size: 0.9rem; }
@@ -110,15 +119,24 @@
     </div>
   </div>
 
+  <!-- 💕 Success Message -->
+  <div id="success">
+    <h1 style="font-size:1.6rem;">
+      Yayyy 💕🥰<br><br>
+      I’m so lucky to have you.<br>
+      Happy Valentine’s Day ❤️
+    </h1>
+  </div>
+
   <!-- 🎶 Music -->
-  <audio id="song" src="Ballad.mp3"></audio>
+  <audio id="song" src="Ballad.mp3" loop></audio>
 
   <script>
     const noBtn = document.getElementById("no");
     const yesBtn = document.getElementById("yes");
     const song = document.getElementById("song");
 
-    // No button escape 😈
+    // 😈 No button escapes
     function moveNo() {
       const x = Math.random() * 220 - 110;
       const y = Math.random() * 120 - 60;
@@ -128,13 +146,13 @@
     noBtn.addEventListener("mouseover", moveNo);
     noBtn.addEventListener("touchstart", moveNo);
 
-    // 🎶 Volume fade in
+    // 🎶 Volume fade-in
     function fadeInAudio(audio, duration = 4000) {
       audio.volume = 0;
-      audio.play();
+      audio.play().catch(() => {});
 
-      let step = 0.02;
-      let interval = duration / (1 / step);
+      const step = 0.02;
+      const interval = duration / (1 / step);
 
       const fade = setInterval(() => {
         if (audio.volume < 1) {
@@ -148,27 +166,11 @@
     yesBtn.addEventListener("click", () => {
       fadeInAudio(song, 4000);
 
-      document.body.innerHTML = `
-        <div style="
-          height:100vh;
-          display:flex;
-          flex-direction:column;
-          justify-content:center;
-          align-items:center;
-          text-align:center;
-          padding:20px;
-          color:white;
-        ">
-          <h1 style="font-size:1.6rem;">
-            Yayyy 💕🥰<br><br>
-            I’m so lucky to have you.<br>
-            Happy Valentine’s Day ❤️
-          </h1>
-        </div>
-      `;
+      document.querySelector(".card").style.display = "none";
+      document.getElementById("success").style.display = "flex";
     });
 
-    // 💖 More hearts
+    // 💖 Floating hearts
     const hearts = ["❤️","💖","💗","💕","🤍","💞"];
 
     function createHeart() {
@@ -186,4 +188,4 @@
   </script>
 
 </body>
-</html
+</html>
